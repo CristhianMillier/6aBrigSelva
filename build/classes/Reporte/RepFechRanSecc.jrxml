@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="43f6334d-2ce4-4186-b7d9-2ceeb8a7afb0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="PieChartDataset" uuid="47fe5103-f189-4a11-a0d5-5bc657c57a61"/>
+	<parameter name="encabezado" class="java.io.InputStream"/>
+	<parameter name="seccion" class="java.lang.String"/>
+	<parameter name="inicioFecha" class="java.lang.String"/>
+	<parameter name="finFecha" class="java.lang.String"/>
+	<parameter name="titulo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from reporteFecha where fechaRecibe >= $P{inicioFecha} and fechaRecibe <= $P{finFecha} and seccion = $P{seccion}]]>
+	</queryString>
+	<field name="nroDoc" class="java.lang.String"/>
+	<field name="seccion" class="java.lang.String"/>
+	<field name="asunto" class="java.lang.String"/>
+	<field name="destinatario" class="java.lang.String"/>
+	<field name="fechaRecibe" class="java.sql.Date"/>
+	<field name="archivoNro" class="java.lang.String"/>
+	<field name="categoria" class="java.lang.String"/>
+	<field name="TipDoc" class="java.lang.String"/>
+	<field name="recibe" class="java.lang.String"/>
+	<field name="guarda" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<image hAlign="Center">
+				<reportElement x="2" y="0" width="800" height="50" uuid="a7126d34-f343-4123-ac47-198354900d82"/>
+				<imageExpression><![CDATA[$P{encabezado}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="4" y="64" width="798" height="24" uuid="e4c3157a-0a09-4ee8-89ee-19e387bcec7e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lucida Sans Typewriter" size="20" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="4" y="13" width="798" height="1" uuid="51770a10-4bbc-463a-9ebb-5f3f727a803b"/>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="14" backcolor="#CCCCCC" uuid="8c3dcb4c-f6a3-46c5-b4eb-c4b0a1f9adc3"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="2" y="0" width="57" height="14" forecolor="#000000" uuid="807d5aed-5064-4302-b5a1-1fb93c146bb3"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Nro. Doc]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="443" y="0" width="80" height="14" forecolor="#000000" uuid="9b3f09f1-c7f2-45ee-99fa-e2a1effd381c"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Destinatario]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="728" y="0" width="65" height="14" forecolor="#000000" uuid="ea7193d2-9ba1-47b1-a9b9-7714e9327228"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="602" y="0" width="49" height="14" forecolor="#000000" uuid="51f6cd3c-63a8-46b1-ba32-a5903c2cbf6c"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Archivo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="529" y="0" width="65" height="14" forecolor="#000000" uuid="21970db5-9de5-4522-a8ff-38150ad7d03e"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Categoría]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="67" y="0" width="60" height="14" forecolor="#000000" uuid="976d48e0-b046-4546-9a0b-458421f3befe"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Tip. Doc.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="661" y="0" width="65" height="14" forecolor="#000000" uuid="be8b3527-83d8-4396-be48-9f1c4f396e89"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Recibido]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="137" y="0" width="294" height="14" forecolor="#000000" uuid="40bfd6a2-5d0d-4118-bfcb-f5e0487990f1"/>
+					<textElement>
+						<font fontName="Lucida Sans Typewriter" size="10" isBold="true" pdfFontName="C:\\MesaPartes\\LucidaTypewriterBold.ttf" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[Asunto]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="4" y="14" width="798" height="1" uuid="c3c96580-049f-44a7-a388-840242207584"/>
+			</line>
+			<frame>
+				<reportElement x="2" y="0" width="800" height="14" uuid="57d2e5a3-f132-4641-b1aa-e7a7bba08ff6"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="2" y="0" width="57" height="14" uuid="71ce15ec-6adb-4cfd-8a48-50ae70115eac"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nroDoc}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="137" y="0" width="294" height="14" uuid="f9d19971-b2ef-4276-8ac5-117b15076dd4"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{asunto}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="728" y="0" width="65" height="14" uuid="68ee0390-df63-4366-92da-02f1c6e3314d"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fechaRecibe}.toString()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="603" y="0" width="49" height="14" uuid="b86f9b55-2d71-4b4d-b888-ffbb799cb7cf"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{archivoNro}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="67" y="0" width="60" height="14" uuid="a70769f6-8aef-4af6-8750-c9b261c88054"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{TipDoc}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="661" y="0" width="65" height="14" uuid="628ea8e7-baf8-4538-88c2-1069db993b98"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{recibe}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="529" y="0" width="65" height="14" uuid="e3fe8e21-b1f6-45f7-b686-73894a6c7a28"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="443" y="0" width="80" height="14" uuid="03cc5b83-e3af-40bc-be56-44aeeef607ee"/>
+					<textElement>
+						<font fontName="Arial" size="10" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{destinatario}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="7314100a-e3cd-4400-af45-3cdbfc1455de"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="5b3b99a3-8b4f-4b8c-8ca6-70cf0ee6bc1a"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="f54bbc44-499d-40ef-aea8-eca87447449e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="36e0d279-9d14-4639-97a2-df900c8dc931"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="2" y="0" width="100" height="16" forecolor="#FFFFFF" uuid="c1e5e93f-b70b-49bd-a3f7-9f28bc8d9149"/>
+					<textElement>
+						<font fontName="Arial" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
